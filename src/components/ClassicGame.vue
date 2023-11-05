@@ -3,8 +3,8 @@ import Board from './Board.vue';
 import Mask from './Mask.vue';
 import { blur } from '../utils/button';
 import { use2048 } from '../utils/2048';
-import { computed } from 'vue';
-import { onKeyStroke, useTransition } from '@vueuse/core';
+import { ref, computed, watch } from 'vue';
+import { onKeyStroke, useSwipe, useTransition } from '@vueuse/core';
 
 const emit = defineEmits<{
     (e: 'up'): void
@@ -20,6 +20,29 @@ game.initialize()
 
 const score = useTransition(computed(() => game.score.value), { duration: 100 })
 const highScore = useTransition(computed(() => game.highScore.value), { duration: 100 })
+
+const board = ref<HTMLElement>()
+const { direction } = useSwipe(board, {
+    threshold: 10
+})
+
+watch(direction, () => {
+    if (direction.value == 'up') {
+        game.up()
+    }
+
+    if (direction.value == 'down') {
+        game.down()
+    }
+
+    if (direction.value == 'left') {
+        game.left()
+    }
+
+    if (direction.value == 'right') {
+        game.right()
+    }
+})
 
 const canMove = computed(() => {
     if (game.hasWon.value && game.firstWon.value) {
