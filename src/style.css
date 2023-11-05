@@ -81,5 +81,4 @@ button:focus-visible {
 
 html {
   touch-action: none;
-  touch-action: pan-y;
 }
