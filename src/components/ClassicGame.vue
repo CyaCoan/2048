@@ -100,6 +100,10 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     game.right()
     emit('right')
 })
+
+document.addEventListener('touchmove', function(e) {
+    e.preventDefault()
+}, {passive: false})
 </script>
 
 <template>
