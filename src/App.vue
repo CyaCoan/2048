@@ -10,25 +10,12 @@
 //     timeIsUp.value = childrenMessage
 // }
 
-import { onBeforeMount } from 'vue';
 import { setRem } from './utils/resize'
-import { useRouter } from 'vue-router';
-import { useSessionStorage } from '@vueuse/core';
 
 const resize = () => setRem(656, 804)
 
 resize()
 window.addEventListener('resize', resize)
-
-const router = useRouter()
-const redirect = useSessionStorage('redirect', '')
-
-onBeforeMount(async () => {
-    if (redirect.value) {
-        await router.push(redirect.value)
-        redirect.value = ''
-    }
-})
 </script>
 
 <template>
