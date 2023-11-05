@@ -77,49 +77,60 @@ onKeyStroke(['ArrowRight', 'd'], () => {
 <template>
     <div class="container-game">
         <div class="container-header">
-            <div class="text1">成绩</div>
-            <div class="text2">最高成绩</div>
-            <div class="score1">{{ score.toFixed(0) }}</div>
-            <div class="score2">{{ highScore.toFixed(0) }}</div>
-            <button primary @click="game.initialize(); blur(`new_game`);" class="new-game" id="new_game">重玩一局</button>
+            <div style="width: 20%; height: 100px;">
+                <div class="text1">成绩</div>
+                <div class="score1">{{ score.toFixed(0) }}</div>
+            </div>
+            <span style="flex: 1 1 0%;"></span>
+            <div style="width: 20%; height: 100px;">
+                <div class="text2">最高成绩</div>
+                <div class="score2">{{ highScore.toFixed(0) }}</div>
+            </div>
+            <button primary @click="game.initialize(); blur(`new_game`);" class="button new-game" id="new_game">重玩一局</button>
         </div>
 
         <transition>
-            <Mask v-if="game.isGameOver.value" :color="'white'" style="position: absolute; bottom: 0px;">
-                <p v-if="game.firstWon.value" class="mask-text" style="position: relative; top: 180px;">你输了</p>
-                <p v-else class="mask-text" style="position: relative; top: 180px;">你输了，但你曾经赢过</p>
+            <Mask v-if="game.isGameOver.value" :color="'white'" style="position: absolute; bottom: 0rem;">
+                <p v-if="game.firstWon.value" class="mask-text" style="position: relative; top: 11.25rem;">你输了</p>
+                <p v-else class="mask-text" style="position: relative; top: 11.25rem;">你输了，但你曾经赢过</p>
             </Mask>
         </transition>
 
         <transition>
-            <Mask v-if="game.hasWon.value && game.firstWon.value" :color="'gold'" style="position: absolute; bottom: 0px;">
-                <p class="mask-text" style="position: relative; top: 140px;">你赢了</p>
-                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="continue">继续</button>
+            <Mask v-if="game.hasWon.value && game.firstWon.value" :color="'gold'" style="position: absolute; bottom: 0rem;">
+                <p class="mask-text" style="position: relative; top: 8.75rem;">你赢了</p>
+                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button continue">继续</button>
             </Mask>
         </transition>
 
         <transition>
-            <Mask v-if="game.reachedLimit.value" :color="'white'" style="position: absolute; bottom: 0px;">
-                <p class="mask-text" style="position: relative; top: 180px;">你来到了游戏的尽头</p>
+            <Mask v-if="game.reachedLimit.value" :color="'white'" style="position: absolute; bottom: 0rem;">
+                <p class="mask-text" style="position: relative; top: 11.25rem;">你来到了游戏的尽头</p>
             </Mask>
         </transition>
 
-        <Board :board="game.board.value" :score="game.score.value" style="bottom: 0px;"></Board>
+        <Board :board="game.board.value" :score="game.score.value" class="container-board" style="bottom: 0rem;"></Board>
     </div>
 </template>
 
 <style lang="scss" scoped>
 .container-game {
-    width: 592px;
-    height: 708px;
-    margin: 16px auto;
+    width: 37rem;
+    min-height: 44.25rem;
+    margin: 1rem auto;
     position: relative;
 }
 
 .container-header {
-    width: 592px;
-    height: 100px;
-    margin-bottom: 16px;
+    width: 100%;
+    max-width: 37rem;
+    margin-bottom: 1rem;
+    position: relative;
+    display: flex;
+}
+
+.container-board {
+    width: 37rem;
     position: relative;
 }
 
@@ -130,7 +141,7 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     text-align: left;
     position: absolute;
     bottom: -32px;
-    left: 0px;
+    left: 0rem;
     user-select: none;
 }
 
@@ -141,7 +152,7 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     text-align: right;
     position: absolute;
     bottom: 50px;
-    right: 0px;
+    right: 0rem;
     user-select: none;
 }
 
@@ -152,7 +163,7 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     text-align: left;
     position: absolute;
     top: -8px;
-    left: 0px;
+    left: 0rem;
     user-select: none;
 }
 
@@ -163,47 +174,70 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     text-align: right;
     position: absolute;
     top: -2px;
-    right: 0px;
+    right: 0rem;
     user-select: none;
 }
 
-.new-game {
+.button {
     width: 144px;
-    height: 50px;
-    border-radius: 25px;
+    height: 48px;
+    border-radius: 24px;
     font-family: 'Microsoft Yahei';
     font-size: 20px;
     font-weight: bold;
-    padding: 4px;
+    padding: 0.25rem;
     background-color: white;
     color: black;
     border-color: black;
+}
+
+.new-game {
     position: absolute;
-    bottom: 0px;
-    right: 0px;
+    bottom: 0rem;
+    right: 0rem;
 }
 
 .continue {
-    width: 144px;
-    height: 50px;
-    border-radius: 25px;
-    font-family: 'Microsoft Yahei';
-    font-size: 20px;
-    font-weight: bold;
-    padding: 4px;
-    background-color: white;
-    color: black;
-    border-color: black;
     position: relative;
-    top: 106px;
+    top: 6.625rem;
 }
 
 .mask-text {
     font-family: 'Microsoft Yahei';
-    font-size: 50px;
+    font-size: 3rem;
     font-weight: bold;
     text-align: center;
     user-select: none;
+}
+
+@media screen and (max-width: 500px) {
+    .score1 {
+        font-size: 42px;
+        bottom: -0.6rem;
+    }
+
+    .score2 {
+        bottom: 42px;
+    }
+
+    .text1 {
+        top: 0px;
+    }
+
+    .text2 {
+        top: 6px;
+    }
+
+    .button {
+        width: 120px;
+        height: 40px;
+        border-radius: 20px;
+        font-size: 16px;
+    }
+
+    .new-game {
+        bottom: 0.5rem;
+    }
 }
 
 .v-enter-from {

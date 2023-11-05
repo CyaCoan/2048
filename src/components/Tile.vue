@@ -11,11 +11,11 @@ const props = defineProps<{
 }>()
 
 const top = computed(() => {
-    return `${16 + 144 * props.row}px`
+    return `${1 + 9 * props.row}rem`
 })
 
 const left = computed(() => {
-    return `${16 + 144 * props.col}px`
+    return `${1 + 9 * props.col}rem`
 })
 
 const z_index = computed(() => {
@@ -82,7 +82,7 @@ const tile_number_shadow_color = computed(() => {
         :style="{
             'background-color': tile_color,
             'color': tile_number_color,
-            'box-shadow': `0 0 10px 0px ${tile_color}`,
+            'box-shadow': `0 0 0.625rem 0rem ${tile_color}`,
             'top': top,
             'left': left,
             'z-index': z_index,
@@ -93,10 +93,10 @@ const tile_number_shadow_color = computed(() => {
         <p class="tile-number"
             :style="{
                 'text-shadow': `
-                    1px 1px 4px ${tile_number_shadow_color},
-                    -1px 1px 4px ${tile_number_shadow_color},
-                    -1px -1px 4px ${tile_number_shadow_color},
-                    1px -1px 4px ${tile_number_shadow_color}
+                    0.0625rem 0.0625rem 0.25rem ${tile_number_shadow_color},
+                    -0.0625rem 0.0625rem 0.25rem ${tile_number_shadow_color},
+                    -0.0625rem -0.0625rem 0.25rem ${tile_number_shadow_color},
+                    0.0625rem -0.0625rem 0.25rem ${tile_number_shadow_color}
                 `
             }">
             <slot></slot>
@@ -106,9 +106,9 @@ const tile_number_shadow_color = computed(() => {
 
 <style lang="scss" scoped>
 .tile {
-    width: 128px;
-    height: 128px;
-    border-radius: 8px;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 0.5rem;
     position: absolute;
     display: flex;
     align-items: center;
@@ -116,7 +116,7 @@ const tile_number_shadow_color = computed(() => {
 
     .tile-number {
         font-family: consolas;
-        font-size: 40px;
+        font-size: 2.5rem;
         font-weight: bold;
         text-align: center;
         z-index: 100;

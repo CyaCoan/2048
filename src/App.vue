@@ -8,6 +8,12 @@
 // function timeUp(childrenMessage: boolean) {
 //     timeIsUp.value = childrenMessage
 // }
+
+import { setRem } from './utils/resize'
+const resize = () => setRem(656, 804)
+
+resize()
+window.addEventListener('resize', resize)
 </script>
 
 <template>

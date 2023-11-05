@@ -15,16 +15,16 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .mask {
-    width: 592px;
-    height: 592px;
-    border-radius: 8px;
+    width: 37rem;
+    height: 37rem;
+    border-radius: 0.5rem;
     position: absolute;
     opacity: 0.5;
 }
 
 .container-mask {
-    width: 592px;
-    height: 592px;
+    width: 37rem;
+    height: 37rem;
     z-index: 100;
 }
 </style>

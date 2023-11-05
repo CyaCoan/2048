@@ -10,8 +10,8 @@ const props = defineProps<{
     <div class="container-hp">
         <div :style="{
             'background-color': `${(hp / max) > 0.2 ? '#2add9c' : '#dc3023'}`,
-            'width': `${(hp < max ? (hp / max) : 1) * 560}px`,
-            'height': '32px',
+            'width': `${(hp < max ? (hp / max) : 1) * 35}rem`,
+            'height': '2rem',
             'float': `${props.side}`,
         }"></div>
 
@@ -21,19 +21,19 @@ const props = defineProps<{
 
 <style lang="scss" scoped>
 .container-hp {
-    width: 560px;
-    height: 32px;
+    width: 35rem;
+    height: 2rem;
     position: relative;
-    margin: 16px;
+    margin: 1rem;
 }
 
 .border {
-    width: 560px;
-    height: 32px;
-    border-radius: 8px;
-    border: 6px solid black;
+    width: 35rem;
+    height: 2rem;
+    border-radius: 0.5rem;
+    border: 0.375rem solid black;
     position: absolute;
-    top: -6px;
-    left: -6px;
+    top: -0.375rem;
+    left: -0.375rem;
 }
 </style>
