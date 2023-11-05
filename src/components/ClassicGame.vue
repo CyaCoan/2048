@@ -22,6 +22,7 @@ const score = useTransition(computed(() => game.score.value), { duration: 100 })
 const highScore = useTransition(computed(() => game.highScore.value), { duration: 100 })
 
 const board = ref<HTMLElement>()
+
 const { direction } = useSwipe(board, {
     threshold: 10
 })
