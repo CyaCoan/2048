@@ -210,10 +210,10 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     user-select: none;
 }
 
-@media screen and (max-width: 500px) {
+@media screen and (max-width: 500px){
     .score1 {
-        font-size: 42px;
-        bottom: -0.6rem;
+        font-size: 50px;
+        bottom: -1.2rem;
     }
 
     .score2 {
@@ -229,14 +229,14 @@ onKeyStroke(['ArrowRight', 'd'], () => {
     }
 
     .button {
-        width: 120px;
-        height: 40px;
-        border-radius: 20px;
-        font-size: 16px;
+        width: 9rem;
+        height: 3rem;
+        border-radius: 1.5rem;
+        font-size: 1.5rem;
     }
 
     .new-game {
-        bottom: 0.5rem;
+        bottom: 1rem;
     }
 }
 
