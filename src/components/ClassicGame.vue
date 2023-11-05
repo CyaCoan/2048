@@ -137,7 +137,7 @@ onKeyStroke(['ArrowRight', 'd'], () => {
             </Mask>
         </transition>
 
-        <Board :board="game.board.value" :score="game.score.value" class="container-board" style="bottom: 0rem;"></Board>
+        <Board :board="game.board.value" :score="game.score.value" class="container-board" style="bottom: 0rem;" ref="board"></Board>
     </div>
 </template>
 
