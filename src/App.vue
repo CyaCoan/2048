@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import ClassicGame from './components/ClassicGame.vue';
 // import Timer from './components/Timer.vue';
 // import { ref } from 'vue';
 
@@ -22,11 +23,11 @@ window.addEventListener('resize', resize)
         {{ stop ? 'start' : 'stop' }}
     </button>
     <div v-if="timeIsUp">Time is up!</div> -->
-    <RouterView></RouterView>
+    <!-- <RouterView></RouterView> -->
 
     <!-- <DuelGame></DuelGame> -->
 
-    <!-- <ClassicGame></ClassicGame> -->
+    <ClassicGame></ClassicGame>
 </template>
 
 <style lang="scss" scoped>
