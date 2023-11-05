@@ -28,19 +28,23 @@ const { direction } = useSwipe(board, {
 })
 
 watch(direction, () => {
-    if (direction.value == 'up') {
+    if (direction.value === 'up') {
+        console.log('swipe up')
         game.up()
     }
 
-    if (direction.value == 'down') {
+    if (direction.value === 'down') {
+        console.log('swipe down')
         game.down()
     }
 
-    if (direction.value == 'left') {
+    if (direction.value === 'left') {
+        console.log('swipe left')
         game.left()
     }
 
-    if (direction.value == 'right') {
+    if (direction.value === 'right') {
+        console.log('swipe right')
         game.right()
     }
 })
