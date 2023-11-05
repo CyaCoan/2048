@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import ClassicGame from './components/ClassicGame.vue';
+// import ClassicGame from './components/ClassicGame.vue';
 // import Timer from './components/Timer.vue';
 // import { ref } from 'vue';
 
@@ -10,11 +10,25 @@ import ClassicGame from './components/ClassicGame.vue';
 //     timeIsUp.value = childrenMessage
 // }
 
+import { onBeforeMount } from 'vue';
 import { setRem } from './utils/resize'
+import { useRouter } from 'vue-router';
+import { useSessionStorage } from '@vueuse/core';
+
 const resize = () => setRem(656, 804)
 
 resize()
 window.addEventListener('resize', resize)
+
+const router = useRouter()
+const redirect = useSessionStorage('redirect', '')
+
+onBeforeMount(async () => {
+    if (redirect.value) {
+        await router.push(redirect.value)
+        redirect.value = ''
+    }
+})
 </script>
 
 <template>
@@ -23,11 +37,11 @@ window.addEventListener('resize', resize)
         {{ stop ? 'start' : 'stop' }}
     </button>
     <div v-if="timeIsUp">Time is up!</div> -->
-    <!-- <RouterView></RouterView> -->
+    <RouterView></RouterView>
 
     <!-- <DuelGame></DuelGame> -->
 
-    <ClassicGame></ClassicGame>
+    <!-- <ClassicGame></ClassicGame> -->
 </template>
 
 <style lang="scss" scoped>
