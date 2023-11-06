@@ -26,5 +26,9 @@ const props = defineProps<{
     width: 37rem;
     height: 37rem;
     z-index: 100;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
 }
 </style>

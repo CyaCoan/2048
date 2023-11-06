@@ -29,22 +29,18 @@ const { direction } = useSwipe(board, {
 
 watch(direction, () => {
     if (direction.value === 'up') {
-        console.log('swipe up')
         game.up()
     }
 
     if (direction.value === 'down') {
-        console.log('swipe down')
         game.down()
     }
 
     if (direction.value === 'left') {
-        console.log('swipe left')
         game.left()
     }
 
     if (direction.value === 'right') {
-        console.log('swipe right')
         game.right()
     }
 })
@@ -123,21 +119,21 @@ document.addEventListener('touchmove', function(e) {
 
         <transition>
             <Mask v-if="game.isGameOver.value" :color="'white'" style="position: absolute; bottom: 0rem;">
-                <p v-if="game.firstWon.value" class="mask-text" style="position: relative; top: 11.25rem;">你输了</p>
-                <p v-else class="mask-text" style="position: relative; top: 11.25rem;">你输了，但你曾经赢过</p>
+                <p v-if="game.firstWon.value" class="mask-text" style="position: relative;">你输了</p>
+                <p v-else class="mask-text" style="position: relative;">你输了<br>但你曾经赢过</p>
             </Mask>
         </transition>
 
         <transition>
             <Mask v-if="game.hasWon.value && game.firstWon.value" :color="'gold'" style="position: absolute; bottom: 0rem;">
-                <p class="mask-text" style="position: relative; top: 8.75rem;">你赢了</p>
-                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button continue">继续</button>
+                <p class="mask-text" style="position: relative;">你赢了</p>
+                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button" style="position: relative;">继续</button>
             </Mask>
         </transition>
 
         <transition>
             <Mask v-if="game.reachedLimit.value" :color="'white'" style="position: absolute; bottom: 0rem;">
-                <p class="mask-text" style="position: relative; top: 11.25rem;">你来到了游戏的尽头</p>
+                <p class="mask-text" style="position: relative;">你来到了游戏的尽头</p>
             </Mask>
         </transition>
 
@@ -229,11 +225,6 @@ document.addEventListener('touchmove', function(e) {
     right: 0rem;
 }
 
-.continue {
-    position: relative;
-    top: 6.625rem;
-}
-
 .mask-text {
     font-family: 'Microsoft Yahei';
     font-size: 3rem;
@@ -261,14 +252,18 @@ document.addEventListener('touchmove', function(e) {
     }
 
     .button {
-        width: 9rem;
-        height: 3rem;
-        border-radius: 1.5rem;
+        width: 9.9rem;
+        height: 3.3rem;
+        border-radius: 1.65rem;
         font-size: 1.5rem;
     }
 
     .new-game {
-        bottom: 1rem;
+        bottom: 0.7rem;
+    }
+
+    .mask-text {
+        font-size: 32px;
     }
 }
 
