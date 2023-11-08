@@ -3,8 +3,13 @@ import Board from './Board.vue';
 import Mask from './Mask.vue';
 import { blur } from '../utils/button';
 import { use2048 } from '../utils/2048';
+import { setRem } from '../utils/resize';
 import { ref, computed, watch } from 'vue';
 import { onKeyStroke, useSwipe, useTransition } from '@vueuse/core';
+
+const resize = () => setRem(656, 804)
+resize()
+window.addEventListener('resize', resize)
 
 const emit = defineEmits<{
     (e: 'up'): void
@@ -119,21 +124,21 @@ document.addEventListener('touchmove', function(e) {
 
         <transition>
             <Mask v-if="game.isGameOver.value" :color="'white'" style="position: absolute; bottom: 0rem;">
-                <p v-if="game.firstWon.value" class="mask-text" style="position: relative;">你输了</p>
-                <p v-else class="mask-text" style="position: relative;">你输了<br>但你曾经赢过</p>
+                <div v-if="game.firstWon.value" class="mask-text" style="position: relative;">你输了</div>
+                <div v-else class="mask-text" style="position: relative;">你输了<br>但你曾经赢过</div>
             </Mask>
         </transition>
 
         <transition>
             <Mask v-if="game.hasWon.value && game.firstWon.value" :color="'gold'" style="position: absolute; bottom: 0rem;">
-                <p class="mask-text" style="position: relative;">你赢了</p>
+                <div class="mask-text" style="position: relative;">你赢了</div>
                 <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button" style="position: relative;">继续</button>
             </Mask>
         </transition>
 
         <transition>
             <Mask v-if="game.reachedLimit.value" :color="'white'" style="position: absolute; bottom: 0rem;">
-                <p class="mask-text" style="position: relative;">你来到了游戏的尽头</p>
+                <div class="mask-text" style="position: relative;">你来到了游戏的尽头</div>
             </Mask>
         </transition>
 
