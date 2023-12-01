@@ -145,7 +145,7 @@ onKeyStroke('f', () => {
     <div class="container-game">
         <div class="container-header">
             <div style="width: 35%; height: 3.5rem;">
-                <div class="hp-text">你的生命值</div>
+                <div class="hp-text">生命值</div>
             </div>
             <span style="flex: 1 1 0%;"></span>
             <div style="width: 35%; height: 3.5rem;">
@@ -154,7 +154,7 @@ onKeyStroke('f', () => {
         </div>
 
         <HealthPointBar :hp="cur_hp" :max="max" :side="'left'"></HealthPointBar>
-        <Board :board="game.board.value" :score="game.score.value" style="bottom: 0rem;"></Board>
+        <Board :board="game.board.value" style="bottom: 0rem;"></Board>
         <!-- <button @click="game.initialize(); hp = 1024; blur(`new_game`)" class="new-game" id="new_game">重玩一局</button> -->
         <!-- <p style="position: absolute; top: 220px; right: 240px; font-family: 'consolas'; font-size: 40px;">{{ cur_hp.toFixed(0) }} / {{ max }}</p> -->
     </div>

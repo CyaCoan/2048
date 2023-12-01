@@ -142,7 +142,7 @@ document.addEventListener('touchmove', function(e) {
             </Mask>
         </transition>
 
-        <Board :board="game.board.value" :score="game.score.value" class="container-board" style="bottom: 0rem;" ref="board"></Board>
+        <Board :board="game.board.value" class="container-board" style="bottom: 0rem;" ref="board"></Board>
     </div>
 </template>
 

@@ -5,7 +5,6 @@ import { Status } from '../utils/2048duel';
 
 const props = defineProps<{
     board: ([number, number] | [number, number, Status] | null)[][],
-    score: number,
 }>()
 
 const flatBoard = computed(() => {
