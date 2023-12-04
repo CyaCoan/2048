@@ -132,7 +132,7 @@ document.addEventListener('touchmove', function(e) {
         <transition>
             <Mask v-if="game.hasWon.value && game.firstWon.value" :color="'gold'" style="position: absolute; bottom: 0rem;">
                 <div class="mask-text" style="position: relative;">你赢了</div>
-                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button" style="position: relative;">继续</button>
+                <button primary @click="game.hasWon.value=false; game.firstWon.value=false" class="button" style="position: relative; margin: 1.25rem;">继续</button>
             </Mask>
         </transition>
 
